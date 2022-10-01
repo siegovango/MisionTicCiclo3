@@ -3,3 +3,5 @@
 Integrantes:
 
 Giovani Sierra Quintero
+
+Santiago Macias Rey
