@@ -1,11 +1,11 @@
 
 
-function readClient(){
+function readComputer(){
 //funcion get
 //alert('llamar a boton');
 //document.getElementById("demo").innerHTML = "Hello World";
     $.ajax({ 
-        url : 'https://gb253c377f83133-reto1g2.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+        url : 'https://gb253c377f83133-reto1g2.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/computer/computer',
         type : 'GET',
         dataType : 'json',
         success : function(json) {
@@ -13,13 +13,11 @@ function readClient(){
             //console.log(json.count)
             let arreglo = json.items;
             //console.log(arreglo.find(name))
-            $("#listarClientes").empty();
+            $("#listarComputer").empty();
             for(i=0;i<arreglo.length;i++){
-                $("#listarClientes").append(arreglo[i].id+"<b>"+ arreglo[i].name+"</b> "+ arreglo[i].email+" "+arreglo[i].age);
-                $("#listarClientes").append("<button onclick= 'borrarCliente("+arreglo[i].id+")'>Borrar</button><br>");
-               // document.getElementById("listarClientes").append( <p> + arreglo[i].name+</p>);
-                $("#listarClientes").append();
-               // document.getElementById("listarClientes").append(<p> + arreglo[i].email+</p>);
+                $("#listarComputer").append(arreglo[i].id+"<b>"+ arreglo[i].name+"</b> "+ arreglo[i].brand+" "+arreglo[i].model);
+                $("#listarComputer").append("<button onclick= 'borrarComputer("+arreglo[i].id+")'>Borrar</button><br>");
+                $("#listarComputer").append();
             }
         },
         error : function(xhr, status) {
@@ -29,38 +27,41 @@ function readClient(){
         //alert('Petición realizada');
        // }
        complete: function(){
-        //readClient();
+        //readComputer();
        }
         });
 }
 
 
-function saveClient(){
+function saveComputer(){
 
-    let id=$("#idCliente").val();
-    let Nombre=$("#NombreCliente").val();
-    let Email=$("#EmailCliente").val();
-    let Edad=$("#EdadCliente").val();
+    let id=$("#idComputer").val();
+    let Name=$("#NameComputer").val();
+    let Brand=$("#BrandComputer").val();
+    let Model=$("#ModelComputer").val();
+    let Category=$("#CategoryComputer").val();
 
     let data={
         id:id,
-        name:Nombre,
-        email:Email,
-        age:Edad
+        name:Name,
+        brand:Brand,
+        model:Model,
+        category_id:Category
     };
     let datosEnviar=JSON.stringify(data);
     console.log(datosEnviar);
     $.ajax({ 
-        url : 'https://gb253c377f83133-reto1g2.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+        url : 'https://gb253c377f83133-reto1g2.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/computer/computer',
         type : 'POST',
         //dataType : 'json',
         data: datosEnviar,
         contentType: 'application/json',
         success : function(json) {
-                $("#idCliente").val("");
-                $("#NombreCliente").val("");
-                $("#EmailCliente").val("");
-                $("#EdadCliente").val("");   
+                $("#idComputer").val("");
+                $("#NameComputer").val("");
+                $("#BrandComputer").val("");
+                $("#ModelComputer").val("");   
+                $("#CategoryComputer").val("");   
         },
         error : function(xhr, status) {
         //alert('ha sucedido un problema');
@@ -69,37 +70,41 @@ function saveClient(){
         //alert('Petición realizada');
         },
         complete: function(){
-            readClient();
+            readComputer();
            }
        });
 }
 
-function editarCliente(){
+function editarComputer(){
 
-    let id=$("#idCliente").val();
-    let Nombre=$("#NombreCliente").val();
-    let Email=$("#EmailCliente").val();
-    let Edad=$("#EdadCliente").val();
+    let id=$("#idComputer").val();
+    let Name=$("#NameComputer").val();
+    let Brand=$("#BrandComputer").val();
+    let Model=$("#ModelComputer").val();
+    let Category=$("#CategoryComputer").val();
+
 
     let data={
         id:id,
-        name:Nombre,
-        email:Email,
-        age:Edad
+        name:Name,
+        brand:Brand,
+        model:Model,
+        category_id:Category
     };
     let datosEnviar=JSON.stringify(data);
     console.log(datosEnviar);
     $.ajax({ 
-        url : 'https://gb253c377f83133-reto1g2.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+        url : 'https://gb253c377f83133-reto1g2.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/computer/computer',
         type : 'PUT',
         //dataType : 'json',
         data: datosEnviar,
         contentType: 'application/json',
         success : function(json) {
-                $("#idCliente").val("");
-                $("#NombreCliente").val("");
-                $("#EmailCliente").val("");
-                $("#EdadCliente").val("");   
+            $("#idComputer").val("");
+            $("#NameComputer").val("");
+            $("#BrandComputer").val("");
+            $("#ModelComputer").val("");   
+            $("#CategoryComputer").val("");    
         },
         error : function(xhr, status) {
         //alert('ha sucedido un problema');
@@ -108,12 +113,12 @@ function editarCliente(){
         //alert('Petición realizada');
         },
         complete: function(){
-            readClient();
+            readComputer();
            }
        });
 }
 
-function borrarCliente(id){
+function borrarComputer(id){
 
     let data={
         id:id,
@@ -121,16 +126,17 @@ function borrarCliente(id){
     let datosEnviar=JSON.stringify(data);
     console.log(datosEnviar);
     $.ajax({ 
-        url : 'https://gb253c377f83133-reto1g2.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+        url : 'https://gb253c377f83133-reto1g2.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/computer/computer',
         type : 'DELETE',
         //dataType : 'json',
         data: datosEnviar,
         contentType: 'application/json',
         success : function(json) {
-                $("#idCliente").val("");
-                $("#NombreCliente").val("");
-                $("#EmailCliente").val("");
-                $("#EdadCliente").val("");   
+            $("#idComputer").val("");
+            $("#NameComputer").val("");
+            $("#BrandComputer").val("");
+            $("#ModelComputer").val("");   
+            $("#CategoryComputer").val("");   
         },
         error : function(xhr, status) {
         //alert('ha sucedido un problema');
@@ -139,7 +145,7 @@ function borrarCliente(id){
         //alert('Petición realizada');
         },
         complete: function(){
-            readClient();
+            readComputer();
            }
        });
 }

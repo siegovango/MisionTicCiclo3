@@ -9,6 +9,7 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script  src="script.js"></script>
+<script  src="scriptComputer.js"></script>
 <body>
     
     <div id="demo"></div>
@@ -22,6 +23,22 @@
     <button onclick="readClient()">Leer Cliente</button>
 
     <div id="listarClientes">
+    </div>
+<br />
+**********************************************
+
+    <div id="demo"></div>
+    <h1>Computadores</h1>
+    Id Computador: <input type="number" id="idComputer"><br><br>
+    Name Computador: <input type="text" id="NameComputer"><br><br>
+    Brand Computador: <input type="text" id="BrandComputer"><br><br>
+    Model Computador: <input type="number" id="ModelComputer"><br><br>
+    Category Computador: <input type="number" id="CategoryComputer"><br><br>
+    <button onclick="saveComputer()">Guardar Computador</button>
+    <button onclick="editarComputer()">Actualizar Computador</button>
+    <button onclick="readComputer()">Leer Computador</button>
+
+    <div id="listarComputer">
     </div>
 </body>
 </html>
