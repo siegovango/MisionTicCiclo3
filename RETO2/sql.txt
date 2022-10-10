@@ -1,0 +1,75 @@
+******************************
+CLIENT
+
+
+SELECT * FROM CLIENT
+
+BEGIN
+    INSERT INTO CLIENT (ID, NAME, EMAIL, AGE)
+    VALUES(:id, :name, :email, :age);
+    :status_code:=201;
+END;
+
+BEGIN
+    UPDATE CLIENT
+    SET EMAIL = :email, AGE = :age, NAME = :name
+    WHERE ID = :id;
+    :status_code:=201;
+END;
+
+BEGIN
+    DELETE FROM CLIENT WHERE ID = :id;
+    :status_code:=204;
+END;
+
+SELECT * FROM CLIENT WHERE ID = :id
+
+******************************
+COMPUTER
+
+SELECT * FROM COMPUTER
+
+BEGIN
+    INSERT INTO COMPUTER(ID, BRAND, MODEL, CATEGORY_ID, NAME)
+    VALUES (:id, :brand, :model, :category_id, :name);
+    :status_code:=201;
+END;
+
+BEGIN
+    UPDATE COMPUTER
+    SET BRAND = :brand, MODEL = :model, CATEGORY_ID = :category_id, NAME = :name 
+    WHERE ID = :id;
+    :status_code:=201;
+END;
+
+BEGIN
+    DELETE FROM COMPUTER WHERE ID = :id;
+    :status_code:=204;
+END;
+
+******************************
+MESSAGE
+
+SELECT * FROM MESSAGE
+
+BEGIN 
+    INSERT INTO MESSAGE(ID,MESSAGETEXT)
+    VALUES(:id,:messagetext);
+    :status_code:=201;
+END;
+
+BEGIN
+    UPDATE MESSAGE
+    SET MESSAGETEXT= :messagetext
+    WHERE ID= :id;
+    :status_code:=201;
+END;
+
+BEGIN
+    DELETE FROM MESSAGE
+    WHERE id=:id;
+    :status_code:=204;
+END;
+
+SELECT * FROM MESSAGE
+WHERE ID =:id
